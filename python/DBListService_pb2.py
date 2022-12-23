@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x44\x42ListService.proto\x12\x0e\x44\x42List_service\"\x13\n\x05Index\x12\n\n\x02id\x18\x01 \x01(\r\"\x16\n\x05Value\x12\r\n\x05value\x18\x01 \x01(\r\"\x14\n\x04Size\x12\x0c\n\x04size\x18\x01 \x01(\r\"-\n\x04List\x12%\n\x06values\x18\x01 \x03(\x0b\x32\x15.DBList_service.Value\"\x06\n\x04Null2\xa0\x04\n\rDBListService\x12\x37\n\x07GetList\x12\x14.DBList_service.Null\x1a\x14.DBList_service.List\"\x00\x12:\n\x08GetValue\x12\x15.DBList_service.Index\x1a\x15.DBList_service.Value\"\x00\x12\x37\n\x06\x41ppend\x12\x15.DBList_service.Value\x1a\x14.DBList_service.Null\"\x00\x12=\n\x0bSearchValue\x12\x15.DBList_service.Value\x1a\x15.DBList_service.Index\"\x00\x12:\n\tRemoveIdx\x12\x15.DBList_service.Index\x1a\x14.DBList_service.Null\"\x00\x12<\n\x0bRemoveValue\x12\x15.DBList_service.Value\x1a\x14.DBList_service.Null\"\x00\x12\x34\n\x04Sort\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Null\"\x00\x12\x37\n\x07Reverse\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Null\"\x00\x12\x39\n\tGetLength\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Size\"\x00\x42\x37\n\x1bio.grpc.examples.iotserviceB\x0fIoTServiceProtoP\x01\xa2\x02\x04TEMPb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x13\x44\x42ListService.proto\x12\x0e\x44\x42List_service\"\x13\n\x05Index\x12\n\n\x02id\x18\x01 \x01(\r\"\x16\n\x05Value\x12\r\n\x05value\x18\x01 \x01(\r\"\x14\n\x04Size\x12\x0c\n\x04size\x18\x01 \x01(\r\"X\n\nIndexValue\x12$\n\x05index\x18\x01 \x01(\x0b\x32\x15.DBList_service.Index\x12$\n\x05value\x18\x02 \x01(\x0b\x32\x15.DBList_service.Value\"-\n\x04List\x12%\n\x06values\x18\x01 \x03(\x0b\x32\x15.DBList_service.Value\"\x06\n\x04Null2\xde\x04\n\rDBListService\x12\x37\n\x07GetList\x12\x14.DBList_service.Null\x1a\x14.DBList_service.List\"\x00\x12:\n\x08GetValue\x12\x15.DBList_service.Index\x1a\x15.DBList_service.Value\"\x00\x12\x37\n\x06\x41ppend\x12\x15.DBList_service.Value\x1a\x14.DBList_service.Null\"\x00\x12<\n\x06Insert\x12\x1a.DBList_service.IndexValue\x1a\x14.DBList_service.Null\"\x00\x12=\n\x0bSearchValue\x12\x15.DBList_service.Value\x1a\x15.DBList_service.Index\"\x00\x12:\n\tRemoveIdx\x12\x15.DBList_service.Index\x1a\x14.DBList_service.Null\"\x00\x12<\n\x0bRemoveValue\x12\x15.DBList_service.Value\x1a\x14.DBList_service.Null\"\x00\x12\x34\n\x04Sort\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Null\"\x00\x12\x37\n\x07Reverse\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Null\"\x00\x12\x39\n\tGetLength\x12\x14.DBList_service.Null\x1a\x14.DBList_service.Size\"\x00\x42\x37\n\x1bio.grpc.examples.iotserviceB\x0fIoTServiceProtoP\x01\xa2\x02\x04TEMPb\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'DBListService_pb2', globals())
@@ -27,10 +27,12 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _VALUE._serialized_end=82
   _SIZE._serialized_start=84
   _SIZE._serialized_end=104
-  _LIST._serialized_start=106
-  _LIST._serialized_end=151
-  _NULL._serialized_start=153
-  _NULL._serialized_end=159
-  _DBLISTSERVICE._serialized_start=162
-  _DBLISTSERVICE._serialized_end=706
+  _INDEXVALUE._serialized_start=106
+  _INDEXVALUE._serialized_end=194
+  _LIST._serialized_start=196
+  _LIST._serialized_end=241
+  _NULL._serialized_start=243
+  _NULL._serialized_end=249
+  _DBLISTSERVICE._serialized_start=252
+  _DBLISTSERVICE._serialized_end=858
 # @@protoc_insertion_point(module_scope)

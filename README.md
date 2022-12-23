@@ -1,30 +1,18 @@
-# gRPC-WS-Example
-This is the gRPC equivalent of the RESTful WS example, meant to illustrate the difference between generic interfaces (i.e., RESTful) and application-specific interfaces.
+# Serviço de manutenção de uma list (DBList) com gRPC
+Implementação de um serviço de manipulação de uma lista (DBList), usando RPC e interfaces genéricas, por meio da biblioteca gRPC.
 
-See here for instructions on how to install gRPC and compile the interface specification (.proto): https://grpc.io/docs/languages/python/quickstart/
+A pasta "protos" apresenta o arquivo "DBListService.proto" que específica a interface genérica do servico DBList construído. É determinado as interfaces e as mensagens trocadas entre o cliente e o servidor.
 
-Step-by-step:
+A pasta "python" apresenta os códigos em Python da implementação.
 
-1) Install PIP
+O arquivo "const.py" contém o IP e a porta do servidor.
 
-$:> sudo apt install python3-pip
+O arquivo "server.py" é referente a definição das implementação dos métodos que operam sobre a lista.
 
-2) Upgrade PIP
+O arquivo "client.py" é referente ao código que executa as chamadas (RPC) que operam sobre a lista existente no servidor.
 
-$:> python3 -m pip install --upgrade pip
+A seguinte linha de código pode ser executada (dentro da pasta "python") para a compilação da interface genérica.
+- python3 -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/DBListService.proto
 
-3) Install gRPC runtime
-
-$:> python3 -m pip install grpcio
-
-4) Install gRPC tools
-
-$:> python3 -m pip install grpcio-tools
-
-5) Clone this repo
-
-6) Compile interface specification (Protocol Buffers .proto file)
-
-$:> cd python
-
-$:> python3 -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/EmployeeService.proto
+# Vídeo da apresentação
+-

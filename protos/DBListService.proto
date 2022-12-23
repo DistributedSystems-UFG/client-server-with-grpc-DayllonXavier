@@ -18,6 +18,9 @@ service DBListService {
   // Adiciona um valor a lista
   rpc Append (Value) returns (Null) {}
   
+  // Adiciona um valor em uma posicao especifica lista
+  rpc Insert (IndexValue) returns (Null) {}
+
   // Retora o indice do primeiro elemento com valor Value
   rpc SearchValue (Value) returns (Index) {}
 
@@ -33,7 +36,7 @@ service DBListService {
   //Reverte os elementos da lista
   rpc Reverse (Null) returns (Null) {}
   
-  //Retorna o tamanhao da lista
+  //Retorna o tamanho da lista
   rpc GetLength (Null) returns (Size) {}
   
 }
@@ -47,7 +50,12 @@ message Value {
 }
 
 message Size {
-    uint32 size = 1;
+  uint32 size = 1;
+}
+
+message IndexValue{
+  Index index = 1;
+  Value value = 2;
 }
 
 message List {

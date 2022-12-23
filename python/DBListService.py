@@ -5,9 +5,7 @@ import grpc
 import DBListService_pb2
 import DBListService_pb2_grpc
 
-DBListList=[
-    42, 24
- ]
+DBListList=[]
 
 class DBListServer(DBListService_pb2_grpc.DBListServiceServicer):
 
@@ -22,6 +20,10 @@ class DBListServer(DBListService_pb2_grpc.DBListServiceServicer):
 
     def Append(self, request, context):
         DBListList.append(request.value)
+        return DBListService_pb2.Null()
+
+    def Insert(self, request, context):
+        DBListList.insert(request.index.id, request.value.value)
         return DBListService_pb2.Null()
 
     def SearchValue(self, request, context):

@@ -29,6 +29,11 @@ class DBListServiceStub(object):
                 request_serializer=DBListService__pb2.Value.SerializeToString,
                 response_deserializer=DBListService__pb2.Null.FromString,
                 )
+        self.Insert = channel.unary_unary(
+                '/DBList_service.DBListService/Insert',
+                request_serializer=DBListService__pb2.IndexValue.SerializeToString,
+                response_deserializer=DBListService__pb2.Null.FromString,
+                )
         self.SearchValue = channel.unary_unary(
                 '/DBList_service.DBListService/SearchValue',
                 request_serializer=DBListService__pb2.Value.SerializeToString,
@@ -85,6 +90,13 @@ class DBListServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Insert(self, request, context):
+        """Adiciona um valor em uma posicao especifica lista
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def SearchValue(self, request, context):
         """Retora o indice do primeiro elemento com valor Value
         """
@@ -121,7 +133,7 @@ class DBListServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetLength(self, request, context):
-        """Retorna o tamanhao da lista
+        """Retorna o tamanho da lista
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -143,6 +155,11 @@ def add_DBListServiceServicer_to_server(servicer, server):
             'Append': grpc.unary_unary_rpc_method_handler(
                     servicer.Append,
                     request_deserializer=DBListService__pb2.Value.FromString,
+                    response_serializer=DBListService__pb2.Null.SerializeToString,
+            ),
+            'Insert': grpc.unary_unary_rpc_method_handler(
+                    servicer.Insert,
+                    request_deserializer=DBListService__pb2.IndexValue.FromString,
                     response_serializer=DBListService__pb2.Null.SerializeToString,
             ),
             'SearchValue': grpc.unary_unary_rpc_method_handler(
@@ -232,6 +249,23 @@ class DBListService(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/DBList_service.DBListService/Append',
             DBListService__pb2.Value.SerializeToString,
+            DBListService__pb2.Null.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Insert(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/DBList_service.DBListService/Insert',
+            DBListService__pb2.IndexValue.SerializeToString,
             DBListService__pb2.Null.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -12,37 +12,56 @@ def run():
         stub = DBListService_pb2_grpc.DBListServiceStub(channel)
 
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
-        response = stub.GetValue(DBListService_pb2.Index(id=0))
-        print('Valor {} na posição {}.'.format(response.value, 0))
-        response = stub.GetValue(DBListService_pb2.Index(id=1))
-        print('Valor {} na posição {}.'.format(response.value, 1))
+        print(("-"*30) + '\n' + str(response))
 
-        stub.Append(DBListService_pb2.Value(value=60))
+        stub.Append(DBListService_pb2.Value(value=6))
+        stub.Append(DBListService_pb2.Value(value=4))
+        stub.Append(DBListService_pb2.Value(value=3))
+        stub.Append(DBListService_pb2.Value(value=2))
+        stub.Append(DBListService_pb2.Value(value=1))
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
+        print(("-"*30) + '\n' + str(response))
 
-        response = stub.SearchValue(DBListService_pb2.Value(value=60))
-        print('Valor {} na posição {}.'.format(60, response.id))
+        stub.Insert(DBListService_pb2.IndexValue(
+            index=DBListService_pb2.Index(id=2),
+            value=DBListService_pb2.Value(value=5)
+        ))
+        stub.Insert(DBListService_pb2.IndexValue(
+            index=DBListService_pb2.Index(id=6),
+            value=DBListService_pb2.Value(value=7)
+        ))
+        response = stub.GetList(DBListService_pb2.Null())
+        print(("-"*30) + '\n' + str(response))
 
         stub.Sort(DBListService_pb2.Null())
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
+        print(("-"*30) + '\n' + str(response))
 
         stub.Reverse(DBListService_pb2.Null())
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
+        print(("-"*30) + '\n' + str(response))
+
+        response = stub.SearchValue(DBListService_pb2.Value(value=4))
+        p = response.id
+        print(p)
+
+        response = stub.GetValue(DBListService_pb2.Index(id=p))
+        print(response.value)
 
         response = stub.GetLength(DBListService_pb2.Null())
-        print('Size {}'.format(response.size))
+        print(response.size)
 
-        stub.RemoveValue(DBListService_pb2.Value(value=60))
+        stub.RemoveIdx(DBListService_pb2.Index(id=p))
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
+        print(("-"*30) + '\n' + str(response))
 
-        stub.RemoveIdx(DBListService_pb2.Index(id=0))
+        stub.RemoveIdx(DBListService_pb2.Index(id=2))
         response = stub.GetList(DBListService_pb2.Null())
-        print('\n' + str(response))
+        print(("-"*30) + '\n' + str(response))
+
+        stub.RemoveValue(DBListService_pb2.Value(value=2))
+        response = stub.GetList(DBListService_pb2.Null())
+        print(("-"*30) + '\n' + str(response))
 
 if __name__ == '__main__':
     logging.basicConfig()
