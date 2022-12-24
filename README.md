@@ -15,4 +15,4 @@ A seguinte linha de código pode ser executada (dentro da pasta "python") para a
 - python3 -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/DBListService.proto
 
 # Vídeo da apresentação
--
+O link para a apresentação do projeto está disponível aqui: https://youtu.be/aa5ybwgBOQo
